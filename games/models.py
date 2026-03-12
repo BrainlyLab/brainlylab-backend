@@ -12,8 +12,8 @@ class Game(models.Model):
         return self.name
 
 class Score(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name=\'scores\')
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name=\'scores\')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='scores')
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='scores')
     score = models.IntegerField()
     submitted_at = models.DateTimeField(auto_now_add=True)
 

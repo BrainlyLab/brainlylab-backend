@@ -12,7 +12,7 @@ class Item(models.Model):
         return self.name
 
 class UserInventory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name=\'inventory\')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='inventory')
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     purchased_at = models.DateTimeField(auto_now_add=True)
 
@@ -23,7 +23,7 @@ class UserInventory(models.Model):
         return f"{self.user.username} - {self.item.name}"
 
 class Transaction(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name=\'transactions\')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transactions')
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     coins_spent = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
