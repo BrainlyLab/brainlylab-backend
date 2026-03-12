@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "generated-id",
+		"name": "BrainlyLab API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"testpassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register",
+								"/"
+							]
+						},
+						"description": "Register a new user"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								"/"
+							]
+						},
+						"description": "Login, returns JWT tokens"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout",
+								"/"
+							]
+						},
+						"description": "Logout, blacklists refresh token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get logged in user info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/me/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me",
+								"/"
+							]
+						},
+						"description": "Get logged in user info"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/token/refresh/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"token",
+								"refresh",
+								"/"
+							]
+						},
+						"description": "Refresh access token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get user profile + total BrainlyCoins",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/profile/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"/"
+							]
+						},
+						"description": "Get user profile + total BrainlyCoins"
+					},
+					"response": []
+				},
+				{
+					"name": "Update profile (username, avatar)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"newusername\",\n    \"avatar\": \"https://example.com/new_avatar.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profile/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"/"
+							]
+						},
+						"description": "Update profile (username, avatar)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get full BrainlyCoins history",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/profile/coins/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"coins",
+								"/"
+							]
+						},
+						"description": "Get full BrainlyCoins history"
+					},
+					"response": []
+				},
+				{
+					"name": "Add coins (Internal)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"coins_earned\": 100,\n    \"reason\": \"Game completion bonus\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profile/coins/add/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"coins",
+								"add",
+								"/"
+							]
+						},
+						"description": "Internal endpoint to add coins (called by game logic later)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "List all active games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/games/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"games",
+								"/"
+							]
+						},
+						"description": "List all active games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get single game details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/games/:slug/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"games",
+								":slug",
+								"/"
+							]
+						},
+						"description": "Get single game details"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit a score",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"score\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/games/:slug/submit-score/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"games",
+								":slug",
+								"submit-score",
+								"/"
+							]
+						},
+						"description": "Submit a score (protected)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get logged in user's score history for a game",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/games/:slug/my-scores/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"games",
+								":slug",
+								"my-scores",
+								"/"
+							]
+						},
+						"description": "Get logged in user's score history for a game"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leaderboard",
+			"item": [
+				{
+					"name": "Global leaderboard (top 50 by total score)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/leaderboard/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"leaderboard",
+								"/"
+							]
+						},
+						"description": "Global leaderboard (top 50 by total score)"
+					},
+					"response": []
+				},
+				{
+					"name": "Per game leaderboard (top 50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/leaderboard/:game_slug/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"leaderboard",
+								":game_slug",
+								"/"
+							]
+						},
+						"description": "Per game leaderboard (top 50)"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set base_url for local development",
+					"if (!pm.environment.get(\"base_url\")) {\n    pm.environment.set(\"base_url\", \"http://127.0.0.1:8000\");\n}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Extract tokens from login response",
+					"if (pm.request.url.includes(\"/api/auth/login/\") && pm.response.code === 200) {\n    const response = pm.response.json();\n    pm.environment.set(\"access_token\", response.access);\n    pm.environment.set(\"refresh_token\", response.refresh);\n    console.log(\"Access Token:\", response.access);\n    console.log(\"Refresh Token:\", response.refresh);\n}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

@@ -18,6 +18,12 @@ INSTALLED_APPS = [
     # Third party
     'rest_framework',
     'corsheaders',
+
+    # Local apps
+    'accounts',
+    'games',
+    'shop',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -82,3 +88,10 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+# CORS Setup
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
