@@ -18,14 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework_simplejwt.views import TokenObtainPairView
-from users.views import RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth/register/', RegisterView.as_view(), name='auth_register'),
-    path('api/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/profile/', include('users.urls')),
+    path('api/', include('users.urls')),
 ]
 
 
