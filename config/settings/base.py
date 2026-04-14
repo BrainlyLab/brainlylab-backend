@@ -18,11 +18,10 @@ INSTALLED_APPS = [
     # Third party
     'rest_framework',
     'corsheaders',
-    
+
     # Local apps
     'users',
 ]
-
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # must be at top
@@ -85,4 +84,4 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-}
+}
